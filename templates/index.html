@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Mascotas</title>
+    <style>
+       /* styles.css */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+nav {
+    background-color: #333;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #555;
+}
+
+h1, h2 {
+    color: #2c3e50;
+}
+
+.mascota {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #34495e;
+}
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="/">Inicio</a>
+    <a href="/registro">Registro</a>
+</nav>
+    
+    <h2>Lista de Mascotas:</h2>
+    {% for una_mascota in todas_mascotas %}
+    <div class="mascota">
+        <p><strong>Nombre:</strong> {{una_mascota.nombre}}</p>
+        <p><strong>Tipo:</strong> {{una_mascota.tipo}}</p>
+        <p><strong>Color:</strong> {{una_mascota.color}}</p>
+    </div>
+    {% endfor %}
+    
+    <h2>Agregar una nueva mascota</h2>
+    <form action="/crear_mascota" method="POST">
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div>
+            <label for="tipo">Tipo:</label>
+            <input type="text" id="tipo" name="tipo" required>
+        </div>
+        <div>
+            <label for="color">Color:</label>
+            <input type="text" id="color" name="color" required>
+        </div>
+        <div>
+            <input type="submit" value="Agregar Mascota">
+        </div>
+    </form>
+</body>
+</html>
